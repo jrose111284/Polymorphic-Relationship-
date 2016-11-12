@@ -48,3 +48,17 @@ Route::get('/update', function () {
 
 
 });
+
+Route::get('/delete', function () {
+//upades the imageable id
+    $staff = Staff::findOrFail(1);
+
+    foreach ($staff->photos as $photo) {
+        $photo->where('id', '1')->delete();
+        $photo->save();
+
+
+    }
+
+
+});
