@@ -11,6 +11,18 @@
 |
 */
 
+use App\Staff;
+use App\product;
+use App\Photo;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/create', function () {
+
+    $staff = Staff::findOrFail(1);
+
+    $staff->photos()->create(['path'=>'example.jpg']);
+
 });
