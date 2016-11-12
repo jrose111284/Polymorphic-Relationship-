@@ -21,8 +21,30 @@ Route::get('/', function () {
 
 Route::get('/create', function () {
 
-    $staff = Staff::findOrFail(1);
+    $staff = Staff::findOrFail(2);
 
-    $staff->photos()->create(['path'=>'example.jpg']);
+    $staff->photos()->create(['path'=>'example_2.jpg']);
+
+});
+Route::get('/read', function () {
+
+    $staff = Staff::findOrFail(2);
+
+   foreach ($staff->photos as $photo) {
+       return $photo->path;
+   }
+
+
+});
+
+Route::get('/update', function () {
+//upades the imageable id
+    $staff = Staff::findOrFail(2);
+
+    foreach ($staff->photos as $photo) {
+        $photo->update(['path'=>'jamie.png']);
+        $photo->save();
+    }
+
 
 });
